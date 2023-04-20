@@ -3,7 +3,6 @@ package com.novi.techiteasy.controllers;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 
 @RestController
 
@@ -32,6 +31,7 @@ public class TelevisionsController {
     public ResponseEntity<Object> updateTelevision(@PathVariable long id, @RequestBody String television) {
         return ResponseEntity.accepted().body("Television " + television + " id number is " + id);
     }
+
 
     @DeleteMapping("/deletetelevision/{id}")
     public ResponseEntity<Object> deleteTelevision(@PathVariable long id) {
