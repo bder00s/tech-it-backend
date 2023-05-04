@@ -1,6 +1,6 @@
-package com.novi.techiteasy.controllers;
+package nl.novi.techiteasy.controllers;
 
-import com.novi.techiteasy.exceptions.RecordNotFoundException;
+import nl.novi.techiteasy.exceptions.RecordNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,12 +9,17 @@ import org.springframework.web.bind.annotation.*;
 
 public class TelevisionsController {
 
+    // GET MAPPING - ALLE DATA ////////////////////////////////////
+
     @GetMapping("/televisions")
 // Return die naar front-end gaat -> omzetten in JSON
     public ResponseEntity<Object> getAllTelevisions() {
         // Ok code 200 -> het is gelukt
         return ResponseEntity.ok("All televisions");
     }
+
+
+    // GET MAPPING - SPECIFIEK REQUEST ////////////////////////////
 
     @GetMapping("/television/{id}")
     public ResponseEntity<Object> getTelevision(@PathVariable long id) {
@@ -34,20 +39,21 @@ public class TelevisionsController {
 
     //throw new Index Out Of Bounds Exception("Foutmelding hier")
 
-
+// POST MAPPING /////////////////////////////////////////////
     @PostMapping("/addtelevision")
     public ResponseEntity<Object> addTelevision(@RequestBody String television)  //normaal is het type de Class waar het over gaat, bijv Television
     {
         return ResponseEntity.created(null).body(television);
     }
 
+    // PUT MAPPING ////////////////////////////////////////////
 
     @PutMapping("/updatetelevision/{id}")
     public ResponseEntity<Object> updateTelevision(@PathVariable long id, @RequestBody String television) {
         return ResponseEntity.accepted().body("Television " + television + " id number is " + id);
     }
 
-
+// DELETE MAPPING ///////////////////////////////////////////////
     @DeleteMapping("/deletetelevision/{id}")
     public ResponseEntity<Object> deleteTelevision(@PathVariable long id) {
 

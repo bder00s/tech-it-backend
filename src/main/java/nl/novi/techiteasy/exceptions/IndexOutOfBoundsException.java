@@ -1,4 +1,4 @@
-package com.novi.techiteasy.exceptions;
+package nl.novi.techiteasy.exceptions;
 
 public class IndexOutOfBoundsException extends RuntimeException {
 
