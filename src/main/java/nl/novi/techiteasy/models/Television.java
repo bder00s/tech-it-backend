@@ -1,5 +1,4 @@
 package nl.novi.techiteasy.models;
-import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Entity;
@@ -15,52 +14,54 @@ public class Television {
     @GeneratedValue
     private Long id;
 
-    @Column(name = "name")
-    private String name;
-
-    @Column(name = "brand")
-    private String brand;
     private String type;
+    private String brand;
+    private String name;
     private double price;
-    private int available;
-    private int sold;
+    private double availableSize;
     private double refreshRate;
     private String screenType;
+    private String screenQuality;
+    private boolean smartTv;
+    private boolean wifi;
+    private boolean voiceControl;
+    private boolean hdr;
+    private boolean bluetooth;
+    private boolean ambiLight;
+    private int originalStock;
+    private int sold;
 
-    public Television(Long id, String name, String brand, String type, double price, int available, int sold, double refreshRate, String screenType) {
-        this.id = id;
-        this.name = name;
-        this.brand = brand;
-        this.type = type;
-        this.price = price;
-        this.available = available;
-        this.sold = sold;
-        this.refreshRate = refreshRate;
-        this.screenType = screenType;
+
+    public Television(Long id, String type, String brand, String name, double price, double availableSize, double refreshRate, String screenType, String screenQuality, boolean smartTv, boolean wifi, boolean voiceControl, boolean hdr, boolean bluetooth, boolean ambiLight, int originalStock, int sold) {
+            this.id = id;
+            this.type = type;
+            this.brand = brand;
+            this.name = name;
+            this.price = price;
+            this.availableSize = availableSize;
+            this.refreshRate = refreshRate;
+            this.screenType = screenType;
+            this.screenQuality = screenQuality;
+            this.smartTv = smartTv;
+            this.wifi = wifi;
+            this.voiceControl = voiceControl;
+            this.hdr = hdr;
+            this.bluetooth = bluetooth;
+            this.ambiLight = ambiLight;
+            this.originalStock = originalStock;
+            this.sold = sold;
     }
 
     public Television() {
 
     }
 
-    public Long getId(){
+    public Long getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getType() {
@@ -71,6 +72,22 @@ public class Television {
         this.type = type;
     }
 
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public double getPrice() {
         return price;
     }
@@ -79,20 +96,12 @@ public class Television {
         this.price = price;
     }
 
-    public int getAvailable() {
-        return available;
+    public double getAvailableSize() {
+        return availableSize;
     }
 
-    public void setAvailable(int available) {
-        this.available = available;
-    }
-
-    public int getSold() {
-        return sold;
-    }
-
-    public void setSold(int sold) {
-        this.sold = sold;
+    public void setAvailableSize(double availableSize) {
+        this.availableSize = availableSize;
     }
 
     public double getRefreshRate() {
@@ -109,5 +118,77 @@ public class Television {
 
     public void setScreenType(String screenType) {
         this.screenType = screenType;
+    }
+
+    public String getScreenQuality() {
+        return screenQuality;
+    }
+
+    public void setScreenQuality(String screenQuality) {
+        this.screenQuality = screenQuality;
+    }
+
+    public boolean isSmartTv() {
+        return smartTv;
+    }
+
+    public void setSmartTv(boolean smartTv) {
+        this.smartTv = smartTv;
+    }
+
+    public boolean isWifi() {
+        return wifi;
+    }
+
+    public void setWifi(boolean wifi) {
+        this.wifi = wifi;
+    }
+
+    public boolean isVoiceControl() {
+        return voiceControl;
+    }
+
+    public void setVoiceControl(boolean voiceControl) {
+        this.voiceControl = voiceControl;
+    }
+
+    public boolean isHdr() {
+        return hdr;
+    }
+
+    public void setHdr(boolean hdr) {
+        this.hdr = hdr;
+    }
+
+    public boolean isBluetooth() {
+        return bluetooth;
+    }
+
+    public void setBluetooth(boolean bluetooth) {
+        this.bluetooth = bluetooth;
+    }
+
+    public boolean isAmbiLight() {
+        return ambiLight;
+    }
+
+    public void setAmbiLight(boolean ambiLight) {
+        this.ambiLight = ambiLight;
+    }
+
+    public int getOriginalStock() {
+        return originalStock;
+    }
+
+    public void setOriginalStock(int originalStock) {
+        this.originalStock = originalStock;
+    }
+
+    public int getSold() {
+        return sold;
+    }
+
+    public void setSold(int sold) {
+        this.sold = sold;
     }
 }
