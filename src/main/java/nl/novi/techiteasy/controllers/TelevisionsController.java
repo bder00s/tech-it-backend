@@ -64,16 +64,14 @@ public class TelevisionsController {
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentRequest().path("/" + television.getId()).toUriString());
         return ResponseEntity.created(uri).body(television);
     }
+//
+//    @PutMapping("/updatetelevision/{id}")
+//    public ResponseEntity<Television> updateTelevision(@PathVariable Long id, @RequestBody String television) {
+//       if (tvrepository.)
+//
+//
+//    }
 
-    @PutMapping("/updatetelevision/{id}")
-    public ResponseEntity<Television> updateTelevision(@PathVariable Long id, @RequestBody String television) {
-       if (tvrepository.)
-
-
-    }
-
-
-}
 
 // PUT MAPPING //////////
 
@@ -94,3 +92,4 @@ public class TelevisionsController {
 //    }
 
 
+}
