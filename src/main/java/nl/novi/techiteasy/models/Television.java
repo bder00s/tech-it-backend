@@ -6,10 +6,11 @@ import jakarta.persistence.Table;
 
 
 @Entity
+
 @Table(name = "televisions")
 
 public class Television {
-
+//Id kiezen die duidelijk aangeeft waar het over gaat, bijvoorbeeld naam
     @Id
     @GeneratedValue
     private Long id;
