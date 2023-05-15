@@ -48,22 +48,23 @@ public class TelevisionService {
     }
 
 
-    public Long createTv(TelevisionDto televisionDto) {
+    public String createTv(TelevisionDto televisionDto) {
+        //2. teacher object wordt aangemaakt;
         Television television = new Television();
-//        televisionRepository.save(transferTelevisionToDto(televisionDto));
+        //3. de velden worden allemaal uit het DTO object gehaald;
         television.setId(televisionDto.id);
         television.setName(televisionDto.name);
         television.setPrice(televisionDto.price);
+        //4. het object teacher met de gevulde velden wordt opgeslagen in de database;
         televisionRepository.save(television);
-        return television.getId();
+
+        //5. de info van de net aangemaakte teacher wordt teruggegeven
+        String televisionInfo = television.getId() + ", " + television.getName() + ", " + television.getPrice();
+        return televisionInfo;
 
     }
 
- /*   public ResponseEntity<TelevisionDto> FindTelevision(Long id){
-       List<Television> listOfTelevisions = televisionRepository.findAll();
-       Television televisionFound = listOfTelevisions.getTelevision
 
-    }*/
 
 
 }
