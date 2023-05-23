@@ -2,8 +2,6 @@ package nl.novi.techiteasy.controllers;
 
 import jakarta.validation.Valid;
 import nl.novi.techiteasy.dtos.TelevisionDto;
-import nl.novi.techiteasy.exceptions.RecordNotFoundException;
-import nl.novi.techiteasy.models.Television;
 import nl.novi.techiteasy.repositories.TelevisionRepository;
 import nl.novi.techiteasy.services.TelevisionService;
 import org.springframework.http.ResponseEntity;
@@ -14,12 +12,11 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
-import java.util.Optional;
 
 
 @RestController
 
-public class TelevisionsController {
+public class TelevisionController {
 
 
     private final TelevisionService televisionService;
@@ -27,7 +24,7 @@ public class TelevisionsController {
 
 
     // SERVICE CONSTRUCTOR INJECTION//////
-    public TelevisionsController(TelevisionService televisionService, TelevisionRepository televisionRepository) {
+    public TelevisionController(TelevisionService televisionService, TelevisionRepository televisionRepository) {
         this.televisionService = televisionService;
         this.televisionRepository = televisionRepository;
     }
@@ -41,8 +38,15 @@ public class TelevisionsController {
         return ResponseEntity.ok().body(televisionService.getAllTelevisions());
     }
 
-    @PostMapping("/addtv")
+    // GET MAPPING 1 televisie ////
+    @GetMapping("/findtelevision/{id}")
+    public ResponseEntity<TelevisionDto> findTelevision(@PathVariable Long id){
+        return ResponseEntity.ok(televisionService.getTelevision(id));
+    }
 
+
+    // POST MAPPING ///
+    @PostMapping("/addtv")
         public ResponseEntity<Object> addTv (@Valid @RequestBody TelevisionDto televisionDto, BindingResult
         bindingResult){
             //bindingResult test het resultaat en mogelijke errors
@@ -70,6 +74,17 @@ public class TelevisionsController {
 
         }
 
+        // KOPPEL REMOTE AAN TELEVISIE ///
+        @PutMapping("/updatetelevision/{id}/remotecontroller/{remotecontroller_id}")
+        public ResponseEntity<TelevisionDto> assignRemoteControllerToTelevision(@PathVariable Long id, @PathVariable Long remotecontroller_id){
+        return ResponseEntity.ok(televisionService.assignRemoteControllerToTelevision(id, remotecontroller_id));
+        }
+
+        // KOPPEL WALLBRACKET AAN TELEVISIE
+    @PutMapping("assignWallbracketToTelevision/{id}/wallbracket/{wall_brackets_id}")
+    public ResponseEntity<String> assignWallbracketsToTelevision(@PathVariable Long id, @PathVariable Long wall_brackets_id){
+        return ResponseEntity.ok(televisionService.assignWallbracketToTelevision(id, wall_brackets_id));
+    }
 
     }
 
